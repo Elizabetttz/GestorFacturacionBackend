@@ -3,24 +3,48 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "type" : "module",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon src/index.js"
+    "dev": "nodemon src/index.js",
+    "start": "node server.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@azure/msal-node": "^3.8.1",
+    "@microsoft/microsoft-graph-client": "^3.0.7",
+    "adm-zip": "^0.5.16",
     "bcryptjs": "^3.0.2",
     "cors": "^2.8.5",
     "dotenv": "^17.2.1",
     "express": "^5.1.0",
+    "fs": "^0.0.1-security",
+    "imap": "^0.8.19",
+    "imap-simple": "^5.1.0",
+    "isomorphic-fetch": "^3.0.0",
     "jsonwebtoken": "^9.0.2",
+    "mailparser": "^3.9.0",
+    "multer": "^2.0.2",
+    "node-imap": "^0.9.6",
+    "node-unrar-js": "^2.0.2",
+    "path": "^0.12.7",
+    "pdf-parse": "^2.1.10",
     "pg": "^8.16.3",
-    "sequelize": "^6.37.7"
+    "poplib": "^0.1.7",
+    "sequelize": "^6.37.7",
+    "xlsx": "https://cdn.sheetjs.com/xlsx-0.20.2/xlsx-0.20.2.tgz"
   },
   "devDependencies": {
     "nodemon": "^3.1.10"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Elizabetttz/GestorFacturacionBackend.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Elizabetttz/GestorFacturacionBackend/issues"
+  },
+  "homepage": "https://github.com/Elizabetttz/GestorFacturacionBackend#readme"
 }

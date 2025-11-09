@@ -24,3 +24,12 @@ router.post("/usuarios", async (req, res) => {
 });
 
 export default router;
+router.get("/usuarios", async (req, res) =>{
+    try{
+        const result = await pool.query('SELECT * FROM usuarios');
+        res.json(result.rows);
+    } catch (err){
+        console.log('Error al obtener usuarios:', err);
+        res.status(500).json({message: 'Error al obtener usuarios'});
+    }
+});

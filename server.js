@@ -9,13 +9,20 @@ import usuariosRoutes from "./src/routes/usuarios.js"
 const app = express();
 
 //Middleware
-app.use(cors()); //Lo que nos habilita que el servidor sea consumido de otro origenes 
+app.use(cors({
+ origin: 'http://localhost:4200', 
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials: true,
+})); //Lo que nos habilita que el servidor sea consumido de otro origenes 
 app.use(express.json()) // permite recibir datos en formato Json en las peticiones.
-
 
 //Clave secreta para JWTm, es necesaria para confirmar y verificar los tokens JWT.
 const SECRET_KEY = "354322012328"
 
+
+//Ruta de Facturas
+import facturasRoutes from "./src/routes/facturas.js";
+app.use("/facturas", facturasRoutes);
 //Ruta de Login 
 
 app.post("/api/login", async (req, res) => {
@@ -33,10 +40,10 @@ app.post("/api/login", async (req, res) => {
 
         const usuario = result.rows[0];
 
-         console.log("👉 Contraseña enviada:", psw);
-        console.log("👉 Hash en BD:", usuario.password);
+         console.log("Contraseña enviada:", psw);
+        console.log("Hash :", usuario.password);
 
-        //comparar contraseñas (bcrypt)
+        //comparar contraseñas
         const validPassword = await bcrypt.compare(psw, usuario.password);
         if(!validPassword){
             return res.status(400).json({ message: "Contraseña incorrecta"});
@@ -57,6 +64,7 @@ app.post("/api/login", async (req, res) => {
         res.status(500).json({message: "Erro en el servidor"});
 
     }
+
 }
 );
 
@@ -64,7 +72,8 @@ app.use("/api", usuariosRoutes);
 
 
 app.get("/", (req, res) => {
-    res.send("Servidor funcionando 🚀");
+    res.send("Servidor funcionando :) ");
+    
 });
 
 app.listen(3000, ()=>{
