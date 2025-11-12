@@ -4,7 +4,6 @@ import bcrypt from "bcryptjs"; // Es la libreria para encriptar y comparar las c
 import jwt from "jsonwebtoken"; // Sirve para generar y validar tokens de sesión
 import pool from "./src/config/db.js";
 import usuariosRoutes from "./src/routes/usuarios.js"
-
 //Configuramos el servidor
 const app = express();
 
@@ -23,8 +22,17 @@ const SECRET_KEY = "354322012328"
 //Ruta de Facturas
 import facturasRoutes from "./src/routes/facturas.js";
 app.use("/facturas", facturasRoutes);
-//Ruta de Login 
 
+//Ruta de facturas recibidas
+import facturasRecibRoutes from "./src/routes/facturas_recibidas.js"
+app.use("/facturas_recibidas", facturasRecibRoutes);
+
+//Ruta de ordenes de compra
+import ordenesRoutes from "./src/routes/ordenes.js"
+app.use("/ordenes_compra", ordenesRoutes);
+
+
+//Ruta de Login 
 app.post("/api/login", async (req, res) => {
     const { documento, psw} = req.body;
 

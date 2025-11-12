@@ -1,0 +1,242 @@
+[
+  {
+    "archivo": "ad09003578540002500000533.pdf",
+    "ruta": "src\\services\\facturas_pdf\\ad09003578540002500000533.pdf",
+    "datos": {
+      "numero_factura": "FEC 533",
+      "comercializadora": "ComercializadoraImpor A cerosS.A.S.",
+      "nit": "900357854-0",
+      "fecha_emision": "14/ 10/ 2025",
+      "descripcion": "EMPACK REDONDO 4\" X 10 MM",
+      "iva": "7,106",
+      "rete_fuente": "935.00",
+      "rete_iva": "1065.90",
+      "rete_ica": "0.00",
+      "subtotal": "37,400",
+      "valor_total": "44,506",
+      "ruta": "src\\services\\facturas_pdf\\ad09003578540002500000533.pdf"
+    },
+    "exito": true,
+    "fecha_procesamiento": "2025-11-12T18:37:31.499Z"
+  },
+  {
+    "archivo": "ad09003578540002500000563.pdf",
+    "ruta": "src\\services\\facturas_pdf\\ad09003578540002500000563.pdf",
+    "datos": {
+      "numero_factura": "FEC 563",
+      "comercializadora": "ComercializadoraImpor A cerosS.A.S.",
+      "nit": "900357854-0",
+      "fecha_emision": "16/ 10/ 2025",
+      "descripcion": "ALUMINIO REDONDO 1.1/2\" X 60 MM",
+      "iva": "3,193",
+      "rete_fuente": "420.15",
+      "rete_iva": "478.95",
+      "rete_ica": "0.00",
+      "subtotal": "16,806",
+      "valor_total": "19,999",
+      "ruta": "src\\services\\facturas_pdf\\ad09003578540002500000563.pdf"
+    },
+    "exito": true,
+    "fecha_procesamiento": "2025-11-12T18:37:43.452Z"
+  },
+  {
+    "archivo": "ad09003578540002500000752.pdf",
+    "ruta": "src\\services\\facturas_pdf\\ad09003578540002500000752.pdf",
+    "datos": {
+      "numero_factura": "FEC 752",
+      "comercializadora": "ComercializadoraImpor A cerosS.A.S.",
+      "nit": "900357854-0",
+      "fecha_emision": "28/ 10/ 2025",
+      "descripcion": "NYLON REDONDO 2\" BLANCO X 160 MM",
+      "iva": "3,225",
+      "rete_fuente": "424.35",
+      "rete_iva": "483.75",
+      "rete_ica": "0.00",
+      "subtotal": "16,974",
+      "valor_total": "20,199",
+      "ruta": "src\\services\\facturas_pdf\\ad09003578540002500000752.pdf"
+    },
+    "exito": true,
+    "fecha_procesamiento": "2025-11-12T18:37:55.343Z"
+  },
+  {
+    "archivo": "ad09003578540002500000889.pdf",
+    "ruta": "src\\services\\facturas_pdf\\ad09003578540002500000889.pdf",
+    "datos": {
+      "numero_factura": "FEC 889",
+      "comercializadora": "ComercializadoraImpor A cerosS.A.S.",
+      "nit": "900357854-0",
+      "fecha_emision": "05/ 11/ 2025",
+      "descripcion": "EMPACK REDONDO 2\" X 300 MM",
+      "iva": "2,121",
+      "rete_fuente": "279.07",
+      "rete_iva": "318.15",
+      "rete_ica": "0.00",
+      "subtotal": "11,163",
+      "valor_total": "13,284",
+      "ruta": "src\\services\\facturas_pdf\\ad09003578540002500000889.pdf"
+    },
+    "exito": true,
+    "fecha_procesamiento": "2025-11-12T18:38:07.141Z"
+  },
+  {
+    "archivo": "ad09003578540002500000899.pdf",
+    "ruta": "src\\services\\facturas_pdf\\ad09003578540002500000899.pdf",
+    "datos": {
+      "numero_factura": "FEC 899",
+      "comercializadora": "ComercializadoraImpor A cerosS.A.S.",
+      "nit": "900357854-0",
+      "fecha_emision": "06/ 11/ 2025",
+      "descripcion": "ALUMINIO REDONDO 3/4\" x 500 MM",
+      "iva": "2,907",
+      "rete_fuente": "382.50",
+      "rete_iva": "436.05",
+      "rete_ica": "0.00",
+      "subtotal": "15,300",
+      "valor_total": "18,207",
+      "ruta": "src\\services\\facturas_pdf\\ad09003578540002500000899.pdf"
+    },
+    "exito": true,
+    "fecha_procesamiento": "2025-11-12T18:38:26.934Z"
+  },
+  {
+    "archivo": "ad09005489550172500000709.pdf",
+    "ruta": "src\\services\\facturas_pdf\\ad09005489550172500000709.pdf",
+    "datos": {
+      "numero_factura": "FE6856",
+      "comercializadora": "HIEFerrescarACERO",
+      "nit": "900548955 - 6",
+      "fecha_emision": "30/10/2025",
+      "descripcion": "TUBO NEGRO 3/4\" 1,5mm",
+      "iva": "COP 5,428.57",
+      "rete_fuente": "0.00",
+      "rete_iva": "0.00",
+      "rete_ica": "0.00",
+      "subtotal": "COP 28,571.43",
+      "valor_total": "COP 34,000.00",
+      "ruta": "src\\services\\facturas_pdf\\ad09005489550172500000709.pdf"
+    },
+    "exito": true,
+    "fecha_procesamiento": "2025-11-12T18:38:38.814Z"
+  },
+  {
+    "archivo": "ad09009624390002500078668.pdf",
+    "ruta": "src\\services\\facturas_pdf\\ad09009624390002500078668.pdf",
+    "datos": {
+      "numero_factura": "78668",
+      "comercializadora": "OXICORTES Y ACEROS DEL CARVAJAL S.A.S.",
+      "nit": "900,962,439-1",
+      "fecha_emision": "15102025",
+      "descripcion": "ACETAL REDONDO 3\" X 150 MM",
+      "iva": "12,160.00",
+      "rete_fuente": "1600.00",
+      "rete_iva": "1824.00",
+      "rete_ica": "0.00",
+      "subtotal": "64,000.00",
+      "valor_total": "76,160.00",
+      "ruta": "src\\services\\facturas_pdf\\ad09009624390002500078668.pdf"
+    },
+    "exito": true,
+    "fecha_procesamiento": "2025-11-12T18:38:50.796Z"
+  },
+  {
+    "archivo": "ad09009624390002500078809.pdf",
+    "ruta": "src\\services\\facturas_pdf\\ad09009624390002500078809.pdf",
+    "datos": {
+      "numero_factura": "78809",
+      "comercializadora": "OXICORTES Y ACEROS DEL CARVAJAL S.A.S.",
+      "nit": "900,962,439-1",
+      "fecha_emision": "05112025",
+      "descripcion": "LAMINA EMPACK 1/4\" X 250 X 250 MM",
+      "iva": "3,211.00",
+      "rete_fuente": "422.50",
+      "rete_iva": "481.65",
+      "rete_ica": "0.00",
+      "subtotal": "16,900.00",
+      "valor_total": "20,111.00",
+      "ruta": "src\\services\\facturas_pdf\\ad09009624390002500078809.pdf"
+    },
+    "exito": true,
+    "fecha_procesamiento": "2025-11-12T18:39:00.593Z"
+  },
+  {
+    "archivo": "ad09009624390002500078811.pdf",
+    "ruta": "src\\services\\facturas_pdf\\ad09009624390002500078811.pdf",
+    "datos": {
+      "numero_factura": "78811",
+      "comercializadora": "OXICORTES Y ACEROS DEL CARVAJAL S.A.S.",
+      "nit": "900,962,439-1",
+      "fecha_emision": "06112025",
+      "descripcion": "LAMINA EMPACK 5/8\" X 170 X 200 MM",
+      "iva": "4,313.00",
+      "rete_fuente": "567.50",
+      "rete_iva": "646.95",
+      "rete_ica": "0.00",
+      "subtotal": "22,700.00",
+      "valor_total": "27,013.00",
+      "ruta": "src\\services\\facturas_pdf\\ad09009624390002500078811.pdf"
+    },
+    "exito": true,
+    "fecha_procesamiento": "2025-11-12T18:39:21.484Z"
+  },
+  {
+    "archivo": "aea21b0d-fe19-4cc9-8bb6-14b1087b86bf.pdf",
+    "ruta": "src\\services\\facturas_pdf\\aea21b0d-fe19-4cc9-8bb6-14b1087b86bf.pdf",
+    "datos": {
+      "numero_factura": "17454",
+      "comercializadora": "@RuedaColRuedas y Rodachinas",
+      "nit": "901.354.558 - 5",
+      "fecha_emision": "31/10/2025",
+      "descripcion": "2 PU03A",
+      "iva": "3.193",
+      "rete_fuente": "0.42",
+      "rete_iva": "0.48",
+      "rete_ica": "0.00",
+      "subtotal": "16.804",
+      "valor_total": "19.997",
+      "ruta": "src\\services\\facturas_pdf\\aea21b0d-fe19-4cc9-8bb6-14b1087b86bf.pdf"
+    },
+    "exito": true,
+    "fecha_procesamiento": "2025-11-12T18:39:27.741Z"
+  },
+  {
+    "archivo": "fv086053108300425b61f5cbd.pdf",
+    "ruta": "src\\services\\facturas_pdf\\fv086053108300425b61f5cbd.pdf",
+    "datos": {
+      "numero_factura": "526017",
+      "comercializadora": "Tecnológico: Facture SAS",
+      "nit": "",
+      "fecha_emision": "07 nov. 2025",
+      "descripcion": "PLATINA 3/4\\\" X 1/4\\\" CRUDO",
+      "iva": "10.576,35",
+      "rete_fuente": "1.39",
+      "rete_iva": "1.59",
+      "rete_ica": "0.00",
+      "subtotal": "55.665,00",
+      "valor_total": "66.241,35",
+      "ruta": "src\\services\\facturas_pdf\\fv086053108300425b61f5cbd.pdf"
+    },
+    "exito": true,
+    "fecha_procesamiento": "2025-11-12T18:39:49.780Z"
+  },
+  {
+    "archivo": "fv0901528731023251009516382039.pdf",
+    "ruta": "src\\services\\facturas_pdf\\fv0901528731023251009516382039.pdf",
+    "datos": {
+      "numero_factura": "VT-16382039",
+      "comercializadora": "ColmenaSeguros",
+      "nit": "901528731-1",
+      "fecha_emision": "02/11/2025",
+      "descripcion": "POLIZA DE SEGUROS: 37-37407-194942 RECIBO:41324119 PERIODO FACTURADO20-OCT-25-19-NOV-25 COB GRAV",
+      "iva": "0,00",
+      "rete_fuente": "0.29",
+      "rete_iva": "0.00",
+      "rete_ica": "0.00",
+      "subtotal": "11.550,00",
+      "valor_total": "11.550,00",
+      "ruta": "src\\services\\facturas_pdf\\fv0901528731023251009516382039.pdf"
+    },
+    "exito": true,
+    "fecha_procesamiento": "2025-11-12T18:39:57.524Z"
+  }
+]

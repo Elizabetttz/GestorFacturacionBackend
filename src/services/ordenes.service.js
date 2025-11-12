@@ -7,21 +7,16 @@ import 'isomorphic-fetch';
 import 'dotenv/config';
 
 
-
 const CLIENT_ID = process.env.CLIENT_ID;
 const EMAIL = 'dnkideas@hotmail.com';
 const TOKEN_FILE = './tokens.json';
-const DOWNLOAD_FOLDER = './facturas_descargadas';
-const PDF_FOLDER = './facturas_pdf';
-
-const KEYWORDS = ['factura', 'Factura', 'Facturación', 'facturación', 'FACTURA', 'FACTURACIÓN'];
+const PDF_FOLDER = './src/services/ordenes_descargadas';
 
 const msalConfig = {
   auth: {
     clientId: CLIENT_ID,
     authority: 'https://login.microsoftonline.com/common'
   },
-
   cache: {
     cachePlugin: {
       beforeCacheAccess: async (cacheContext) => {
@@ -39,10 +34,6 @@ const msalConfig = {
 };
 
 const pca = new PublicClientApplication(msalConfig);
-
-if(!fs.existsSync(DOWNLOAD_FOLDER)){
-  fs.mkdirSync(DOWNLOAD_FOLDER, { recursive: true });
-}
 
 if(!fs.existsSync(PDF_FOLDER)){
   fs.mkdirSync(PDF_FOLDER, { recursive: true });
@@ -95,7 +86,7 @@ function sanitizeFilename(filename){
   return filename.replace(/[<>:"/\\|?*]/g,'-');
 }
 
-function extractZip(zipPath, extractPath){
+function extractZip(zipPath, extractPath, emailSubject){
   try {
     const zip = new AdmZip(zipPath);
     zip.extractAllTo(extractPath, true);
@@ -111,7 +102,7 @@ function extractZip(zipPath, extractPath){
 
         if(entryName.toLowerCase().endsWith('.pdf')){
           const pdfFileName = sanitizeFilename(path.basename(entryName));
-          const pdfDestPath = path.join(PDF_FOLDER,pdfFileName);
+          const pdfDestPath = path.join(PDF_FOLDER, pdfFileName);
 
           let finalPath = pdfDestPath;
           let counter = 1;
@@ -123,8 +114,8 @@ function extractZip(zipPath, extractPath){
           }
 
           const pdfSourcePath = path.join(extractPath, entryName);
-          fs.copyFileSync(pdfSourcePath,finalPath);
-          console.log(`Pdf copiado a facturas_pdf/${path.basename(finalPath)}`);
+          fs.copyFileSync(pdfSourcePath, finalPath);
+          console.log(`✅ PDF copiado: ${path.basename(finalPath)}`);
           pdfCount++;
         }
       }
@@ -144,27 +135,30 @@ async function downloadAttachment(client, messageId, attachment, emailSubject){
     .get();
 
     const filename = sanitizeFilename(attachment.name);
-    const filepath = path.join(DOWNLOAD_FOLDER, filename);
+    const filepath = path.join(PDF_FOLDER, filename);
 
     const buffer = Buffer.from(attachmentData.contentBytes, 'base64');
     fs.writeFileSync(filepath, buffer);
 
-    console.log(`Descargado: ${filename} (${(buffer.length / 1024).toFixed(2)} KB)`);
+    console.log(`📥 Descargado: ${filename} (${(buffer.length / 1024).toFixed(2)} KB)`);
+
+    let pdfCount = 0;
 
     if (filename.toLowerCase().endsWith('.zip')) {
-      const extractPath = path.join(DOWNLOAD_FOLDER, `${path.parse(filename).name}_extracted`);
+      const extractPath = path.join(PDF_FOLDER, `${path.parse(filename).name}_extracted`);
       if (!fs.existsSync(extractPath)){
         fs.mkdirSync(extractPath, {recursive: true});
       }
 
-      pdfCount = extractZip(filepath, extractPath);
+      pdfCount = extractZip(filepath, extractPath, emailSubject);
     } else if (filename.toLowerCase().endsWith('.pdf')){
-      console.log(`pdf directo (no de zip)- ignorado`)
+      console.log(`✅ PDF directo descargado: ${filename}`);
+      pdfCount = 1;
     }
 
-    return true;
+    return pdfCount;
   } catch (error){
-    console.error(`Error descargando ${attachment.name}: ${error.message}`);
+    console.error(`❌ Error descargando ${attachment.name}: ${error.message}`);
     return 0;
   }
 }
@@ -179,38 +173,58 @@ async function searchAndDownloadInvoices(){
       }
     });
 
-    console.log('Buscando correo con palabras claves de facturas...\n');
+    console.log('🔍 Buscando todos los correos recientes para filtrar por "Ordenes de Compra"...\n');
 
-    const searchQuery = KEYWORDS.map(kw => `"${kw}"`).join(' OR ');
-
+    // OBTENER TODOS LOS CORREOS RECIENTES Y FILTRAR LOCALMENTE
     const messages = await client
     .api('/me/messages')
-    .search(searchQuery)
     .select('id,subject,from,receivedDateTime,hasAttachments')
-    .top(150)
+    .top(200)
+    .orderby('receivedDateTime DESC')
     .get();
 
-    console.log(`Encontrados ${messages.value.length} correos con palabras clave\n`);
+    console.log(`📧 Encontrados ${messages.value.length} correos recientes\n`);
 
     if (messages.value.length === 0){
-      console.log('No se encontraron correos con las palabras clave');
+      console.log('❌ No se encontraron correos');
+      return;
+    }
+
+    // FILTRAR LOCALMENTE LOS QUE TIENEN "ORDENES DE COMPRA" EN EL ASUNTO
+    const ordenesCompraMessages = messages.value.filter(message => {
+      if (!message.subject) return false;
+      
+      const subjectLower = message.subject.toLowerCase();
+      return subjectLower.includes('ordenes de compra') || 
+             subjectLower.includes('orden de compra') ||
+             subjectLower.includes('oc-') ||
+             subjectLower.includes('oc ') ||
+             subjectLower.includes('purchase order');
+    });
+
+    console.log(`📋 Correos filtrados con "Ordenes de Compra": ${ordenesCompraMessages.length}\n`);
+
+    if (ordenesCompraMessages.length === 0) {
+      console.log('❌ No se encontraron correos con "Ordenes de Compra" en el asunto');
+      console.log('📝 Asuntos encontrados:');
+      messages.value.slice(0, 10).forEach((msg, index) => {
+        console.log(`   ${index + 1}. ${msg.subject}`);
+      });
       return;
     }
 
     let totalDownloaded = 0;
     let totalPDFs = 0;
     let emailsWithAttachments = 0;
-    let emailsProcessed = 0;
 
-    for (const message of messages.value){
-      emailsProcessed++;
-
+    for (const message of ordenesCompraMessages){
       if(!message.hasAttachments){
+        console.log(`\n📧 ${message.subject} - ❌ Sin adjuntos, saltando...`);
         continue;
       }
 
       emailsWithAttachments++;
-      console.log(`\n📧 Correo: ${message.subject}`);
+      console.log(`\n📧 Procesando: ${message.subject}`);
       console.log(`   De: ${message.from.emailAddress.address}`);
       console.log(`   Fecha: ${new Date(message.receivedDateTime).toLocaleString()}`);
     
@@ -219,7 +233,7 @@ async function searchAndDownloadInvoices(){
       .get();
 
       if(attachments.value.length > 0){
-        console.log(`${attachments.value.length} archivos adjuntos: `);
+        console.log(`   📎 ${attachments.value.length} archivos adjuntos:`);
 
         for (const attachment of attachments.value){
           const pdfCount = await downloadAttachment(client, message.id, attachment, message.subject);
@@ -229,33 +243,22 @@ async function searchAndDownloadInvoices(){
       }
     }
 
-      console.log('\n' + '='.repeat(60));
-    console.log(`✨ Resumen:`);
-    console.log(`   📧 Correos encontrados: ${messages.value.length}`);
+    console.log('\n' + '='.repeat(60));
+    console.log(`✨ RESUMEN FINAL - ORDENES DE COMPRA:`);
+    console.log(`   📧 Correos con "Ordenes de Compra": ${ordenesCompraMessages.length}`);
     console.log(`   📎 Correos con adjuntos: ${emailsWithAttachments}`);
     console.log(`   📥 Archivos descargados: ${totalDownloaded}`);
-    console.log(`   📄 PDFs extraídos: ${totalPDFs}`);
-    console.log(`   📁 PDFs guardados en: ${path.resolve(PDF_FOLDER)}`);
+    console.log(`   📄 PDFs de Ordenes de Compra: ${totalPDFs}`);
+    console.log(`   📁 Guardados en: ${path.resolve(PDF_FOLDER)}`);
     console.log('='.repeat(60));
 
-
-
-    
   } catch (error) {
-    console.error('error:', error.message);
-
+    console.error('❌ Error:', error.message);
     if (error.statusCode){
-      console.error('Codigo de estado:', error.statusCode);
+      console.error('Código de estado:', error.statusCode);
     }
   }
-
-
-  
-
 }
 
-/////
-
-
-
+// Ejecutar
 searchAndDownloadInvoices();

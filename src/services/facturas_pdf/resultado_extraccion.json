@@ -1,0 +1,304 @@
+[
+  {
+    "pdf": "ad09003578540002500000533.pdf",
+    "nit_empresa": "79,496,846-1",
+    "todos_nits": [
+      "79,496,846-1",
+      "900,357,854-0",
+      "900357854-0",
+      "900284185-7"
+    ],
+    "telefonos": [
+      "3014437685",
+      "9277251"
+    ],
+    "fecha_emision": "21/10/2025",
+    "subtotal_raw": "37,400",
+    "iva_raw": "7,106",
+    "neto_raw": "44,506",
+    "subtotal": 37.4,
+    "iva": 7.106,
+    "neto": 44.506,
+    "items": [
+      {
+        "cantidad": "11.00",
+        "descripcion": "EMPACK REDONDO 4\" X 10 MM",
+        "valor_unitario": "3,400.00",
+        "valor_total": "37,400.00"
+      }
+    ]
+  },
+  {
+    "pdf": "ad09003578540002500000563.pdf",
+    "nit_empresa": "79,496,846-1",
+    "todos_nits": [
+      "79,496,846-1",
+      "900,357,854-0",
+      "900357854-0",
+      "900284185-7"
+    ],
+    "telefonos": [
+      "3014437685",
+      "9277251"
+    ],
+    "fecha_emision": "21/10/2025",
+    "subtotal_raw": "16,806",
+    "iva_raw": "3,193",
+    "neto_raw": "19,999",
+    "subtotal": 16.806,
+    "iva": 3.193,
+    "neto": 19.999,
+    "items": []
+  },
+  {
+    "pdf": "ad09003578540002500000752.pdf",
+    "nit_empresa": "79,496,846-1",
+    "todos_nits": [
+      "79,496,846-1",
+      "900,357,854-0",
+      "900357854-0",
+      "900284185-7"
+    ],
+    "telefonos": [
+      "3014437685",
+      "9277251"
+    ],
+    "fecha_emision": "28/10/2025",
+    "subtotal_raw": "16,974",
+    "iva_raw": "3,225",
+    "neto_raw": "20,199",
+    "subtotal": 16.974,
+    "iva": 3.225,
+    "neto": 20.199,
+    "items": [
+      {
+        "cantidad": "1.00",
+        "descripcion": "NYLON REDONDO 2\" BLANCO X 160 MM",
+        "valor_unitario": "16,974.00",
+        "valor_total": "16,974.00"
+      }
+    ]
+  },
+  {
+    "pdf": "ad09003578540002500000889.pdf",
+    "nit_empresa": "79,496,846-1",
+    "todos_nits": [
+      "79,496,846-1",
+      "900,357,854-0",
+      "900357854-0",
+      "900284185-7"
+    ],
+    "telefonos": [
+      "3014437685",
+      "9277251"
+    ],
+    "fecha_emision": "05/11/2025",
+    "subtotal_raw": "11,163",
+    "iva_raw": "2,121",
+    "neto_raw": "13,284",
+    "subtotal": 11.163,
+    "iva": 2.121,
+    "neto": 13.284,
+    "items": [
+      {
+        "cantidad": "1.00",
+        "descripcion": "EMPACK REDONDO 2\" X 300 MM",
+        "valor_unitario": "11,163.00",
+        "valor_total": "11,163.00"
+      }
+    ]
+  },
+  {
+    "pdf": "ad09003578540002500000899.pdf",
+    "nit_empresa": "79,496,846-1",
+    "todos_nits": [
+      "79,496,846-1",
+      "900,357,854-0",
+      "900357854-0",
+      "900284185-7"
+    ],
+    "telefonos": [
+      "3014437685",
+      "9277251"
+    ],
+    "fecha_emision": "06/11/2025",
+    "subtotal_raw": "15,300",
+    "iva_raw": "2,907",
+    "neto_raw": "18,207",
+    "subtotal": 15.3,
+    "iva": 2.907,
+    "neto": 18.207,
+    "items": [
+      {
+        "cantidad": "1.00",
+        "descripcion": "ALUMINIO REDONDO 3/4\" x 500 MM",
+        "valor_unitario": "15,300.00",
+        "valor_total": "15,300.00"
+      }
+    ]
+  },
+  {
+    "pdf": "ad09005489550172500000709.pdf",
+    "nit_empresa": "900548955",
+    "todos_nits": [
+      "900548955",
+      "830057860"
+    ],
+    "telefonos": [
+      "4704566",
+      "3014437685"
+    ],
+    "fecha_emision": "30/10/2025",
+    "subtotal_raw": "28,571.43",
+    "iva_raw": "19",
+    "neto_raw": "34,000.00",
+    "subtotal": 28.57143,
+    "iva": 19,
+    "neto": 34,
+    "items": []
+  },
+  {
+    "pdf": "ad09009624390002500078668.pdf",
+    "nit_empresa": "900,962,439-1",
+    "todos_nits": [
+      "900,962,439-1",
+      ".",
+      "900,284,185-7"
+    ],
+    "telefonos": [
+      "3828321 - 7103090",
+      "3828321-7103090"
+    ],
+    "fecha_emision": "21/10/2025",
+    "subtotal_raw": "64,000.00",
+    "iva_raw": ".",
+    "neto_raw": "76,160.00",
+    "subtotal": 64,
+    "iva": null,
+    "neto": 76.16,
+    "items": [
+      {
+        "cantidad": "15",
+        "descripcion": "10 2025 CONTADO CODIGO ICA",
+        "valor_unitario": "47521",
+        "valor_total": "6.9"
+      }
+    ]
+  },
+  {
+    "pdf": "ad09009624390002500078809.pdf",
+    "nit_empresa": "900,962,439-1",
+    "todos_nits": [
+      "900,962,439-1",
+      ".",
+      "900,284,185-7"
+    ],
+    "telefonos": [
+      "3828321 - 7103090",
+      "3828321-7103090"
+    ],
+    "fecha_emision": "05/11/2025",
+    "subtotal_raw": "16,900.00",
+    "iva_raw": ".",
+    "neto_raw": "20,111.00",
+    "subtotal": 16.9,
+    "iva": null,
+    "neto": 20.111,
+    "items": [
+      {
+        "cantidad": "05",
+        "descripcion": "11 2025 CONTADO CODIGO ICA",
+        "valor_unitario": "47521",
+        "valor_total": "6.9"
+      }
+    ]
+  },
+  {
+    "pdf": "ad09009624390002500078811.pdf",
+    "nit_empresa": "900,962,439-1",
+    "todos_nits": [
+      "900,962,439-1",
+      ".",
+      "900,284,185-7"
+    ],
+    "telefonos": [
+      "3828321 - 7103090",
+      "3828321-7103090"
+    ],
+    "fecha_emision": "06/11/2025",
+    "subtotal_raw": "22,700.00",
+    "iva_raw": ".",
+    "neto_raw": "27,013.00",
+    "subtotal": 22.7,
+    "iva": null,
+    "neto": 27.013,
+    "items": [
+      {
+        "cantidad": "06",
+        "descripcion": "11 2025 CONTADO CODIGO ICA",
+        "valor_unitario": "47521",
+        "valor_total": "6.9"
+      }
+    ]
+  },
+  {
+    "pdf": "aea21b0d-fe19-4cc9-8bb6-14b1087b86bf.pdf",
+    "nit_empresa": "901.354.558",
+    "todos_nits": [
+      "901.354.558",
+      "111111111",
+      "900534356-3"
+    ],
+    "telefonos": [],
+    "fecha_emision": "31/10/2025",
+    "subtotal_raw": null,
+    "iva_raw": "19",
+    "neto_raw": "3.193",
+    "subtotal": null,
+    "iva": 19,
+    "neto": 3.193,
+    "items": []
+  },
+  {
+    "pdf": "fv086053108300425b61f5cbd.pdf",
+    "nit_empresa": "860.531.083-1",
+    "todos_nits": [
+      "860.531.083-1",
+      "860.531.083-1",
+      "800089002-1",
+      "900399741-7"
+    ],
+    "telefonos": [
+      "6017454769"
+    ],
+    "fecha_emision": "2024/11/30",
+    "subtotal_raw": null,
+    "iva_raw": ".",
+    "neto_raw": null,
+    "subtotal": null,
+    "iva": null,
+    "neto": null,
+    "items": []
+  },
+  {
+    "pdf": "fv0901528731023251009516382039.pdf",
+    "nit_empresa": "901528731-1",
+    "todos_nits": [
+      "901528731-1",
+      "79496846",
+      "900.032.159-4"
+    ],
+    "telefonos": [
+      "6014010447",
+      "3014437685"
+    ],
+    "fecha_emision": "02/11/2025",
+    "subtotal_raw": null,
+    "iva_raw": null,
+    "neto_raw": null,
+    "subtotal": null,
+    "iva": null,
+    "neto": null,
+    "items": []
+  }
+]
