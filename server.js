@@ -3,7 +3,10 @@ import cors  from "cors"; // Middleware que permite que otros dominios como el f
 import bcrypt from "bcryptjs"; // Es la libreria para encriptar y comparar las contraseñas
 import jwt from "jsonwebtoken"; // Sirve para generar y validar tokens de sesión
 import pool from "./src/config/db.js";
-import usuariosRoutes from "./src/routes/usuarios.js"
+import path from "path";
+import { fileURLToPath } from 'url';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 //Configuramos el servidor
 const app = express();
 
@@ -18,6 +21,9 @@ app.use(express.json()) // permite recibir datos en formato Json en las peticion
 //Clave secreta para JWTm, es necesaria para confirmar y verificar los tokens JWT.
 const SECRET_KEY = "354322012328"
 
+//Ruta de Usuarios
+import usuariosRoutes from "./src/routes/usuarios.js"
+app.use("/usuarios", usuariosRoutes);
 
 //Ruta de Facturas
 import facturasRoutes from "./src/routes/facturas.js";
@@ -26,6 +32,10 @@ app.use("/facturas", facturasRoutes);
 //Ruta de facturas recibidas
 import facturasRecibRoutes from "./src/routes/facturas_recibidas.js"
 app.use("/facturas_recibidas", facturasRecibRoutes);
+
+// PARA QUE LOS PDFs SE PUEDAN DESCARGAR
+app.use('/ordenes', express.static(path.join(__dirname, 'src/services/ordenes_descargadas')));
+app.use('/facturas', express.static(path.join(__dirname, 'src/services/facturas_pdf')));
 
 //Ruta de ordenes de compra
 import ordenesRoutes from "./src/routes/ordenes.js"
@@ -75,8 +85,6 @@ app.post("/api/login", async (req, res) => {
 
 }
 );
-
-app.use("/api", usuariosRoutes);
 
 
 app.get("/", (req, res) => {

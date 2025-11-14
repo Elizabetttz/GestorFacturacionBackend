@@ -63,7 +63,7 @@ function debugCampos(campos, nombreArchivo) {
     console.log(`   Confidence: ${(campo.confidence * 100).toFixed(1)}%`);
     console.log(`   Type: ${campo.kind}`);
     
-    if (campo.values && Array.isArray(campos[key].values)) {
+    if (campo.values && Array.isArray(campo.values)) {
       console.log(`   Values: ${campos[key].values.length} elementos`);
       campos[key].values.forEach((valor, index) => {
         console.log(`   [Item ${index + 1}]:`);
@@ -137,7 +137,7 @@ async function analizarOrdenCompra(pdfPath) {
     const result = await poller.pollUntilDone();
 
     // DEBUG: Mostrar estructura completa
-    debugEstructuraCompleta(result, nombreArchivo);
+    //debugEstructuraCompleta(result, nombreArchivo);
 
     if (!result.documents || result.documents.length === 0) {
       console.warn(`⚠️  No se detectó estructura de documento en ${nombreArchivo}`);
@@ -153,7 +153,7 @@ async function analizarOrdenCompra(pdfPath) {
     const campos = factura.fields || {};
 
     // DEBUG: Mostrar campos detectados
-    debugCampos(campos, nombreArchivo);
+    //debugCampos(campos, nombreArchivo);
 
     let datosOrden = {
       archivo: nombreArchivo,
@@ -222,6 +222,11 @@ async function analizarOrdenCompra(pdfPath) {
   }
 }
 
+function ordenYaProcesada(nombreArchivo, listaOrdenes) {
+  return listaOrdenes.some(f => f.archivo === nombreArchivo && f.exito === true);
+}
+
+
 // ========== FUNCIÓN PARA PROCESAR TODAS LAS ÓRDENES ==========
 async function procesarTodasLasOrdenes() {
   console.log('\n' + '='.repeat(60));
@@ -238,32 +243,52 @@ async function procesarTodasLasOrdenes() {
       .filter(file => file.toLowerCase().endsWith('.pdf'))
       .map(file => path.join(PDF_FOLDER, file));
 
+    
+
     if (archivos.length === 0) {
       console.log('❌ No se encontraron archivos PDF para analizar');
       return;
     }
 
+    const resultadosPrevios = (() => {
+      try {
+        if (!fs.existsSync(OUTPUT_FILE)) return [];
+        const contenido = fs.readFileSync(OUTPUT_FILE, "utf8").trim();
+        return contenido ? JSON.parse(contenido) : [];
+      } catch (error) {
+        console.error(`⚠️  Error leyendo ${OUTPUT_FILE}:`, error.message);
+        return [];
+      }
+    })();
+
+
     console.log(`📄 Encontrados ${archivos.length} archivos PDF\n`);
 
-    const resultados = [];
-    let exitosos = 0;
-    let fallidos = 0;
+    const resultados = [...resultadosPrevios];
+
+    let exitosos = resultadosPrevios.filter(f => f.exito).length;
+    let fallidos = resultadosPrevios.filter(f => !f.exito).length;
 
     for (let i = 0; i < archivos.length; i++) {
-      console.log(`\n[${i + 1}/${archivos.length}]`);
-      
+      const nombreArchivo = path.basename(archivos[i]);
+      console.log(`\n[${i + 1}/${archivos.length}] ${nombreArchivo}`);
+
+      // VALIDACIÓN — evitar reprocesar
+      if (ordenYaProcesada(nombreArchivo, resultadosPrevios)) {
+        console.log(`⏭️ Saltando ${nombreArchivo} (ya procesada anteriormente)`);
+        continue;
+      }
+
+      // Procesar normalmente
       const resultado = await analizarOrdenCompra(archivos[i]);
       resultados.push(resultado);
 
-      if (resultado.exito) {
-        exitosos++;
-      } else {
-        fallidos++;
-      }
+      if (resultado.exito) exitosos++;
+      else fallidos++;
 
-      // Pausa entre procesamientos para no saturar Azure
+      // Pequeña pausa
       if (i < archivos.length - 1) {
-        await new Promise(resolve => setTimeout(resolve, 2000));
+        await new Promise(resolve => setTimeout(resolve, 1000));
       }
     }
 
@@ -287,10 +312,12 @@ async function procesarTodasLasOrdenes() {
     console.log(`💾 Resultados guardados en: ${path.resolve(OUTPUT_FILE)}`);
     console.log('='.repeat(60) + '\n');
 
+    return true;
   } catch (error) {
     console.error('\n❌ Error general:', error.message);
+    throw error;
   }
 }
 
 // Ejecutar análisis
-procesarTodasLasOrdenes();
+export {procesarTodasLasOrdenes};

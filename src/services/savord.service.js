@@ -3,7 +3,7 @@ import fs from 'fs';
 import path from 'path';
 
 const JSON_FILE = './ordenes_compra_analizadas.json';
-const PDF_FOLDER = './ordernes_descargadas';
+const PDF_FOLDER = './src/services/ordernes_descargadas';
 const PDF_WEB_PATH = '/ordenes/';
 
 async function crearTabla(){
@@ -151,10 +151,14 @@ async function importarJSONaDb(){
         console.log(`❌ Fallidas: ${fallidos}`);
         console.log(`📊 Total: ${ordenes.length}`);
 
+        return true;
+
     } catch (error){
         console.error('❌ Error general:', error.message);
+        throw error;
     }
 }
 
 
-importarJSONaDb();
+export {importarJSONaDb};
+

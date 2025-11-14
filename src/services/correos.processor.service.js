@@ -11,8 +11,8 @@ import 'dotenv/config';
 const CLIENT_ID = process.env.CLIENT_ID;
 const EMAIL = 'dnkideas@hotmail.com';
 const TOKEN_FILE = './tokens.json';
-const DOWNLOAD_FOLDER = './facturas_descargadas';
-const PDF_FOLDER = './facturas_pdf';
+const DOWNLOAD_FOLDER = './src/services/facturas_descargadas';
+const PDF_FOLDER = './src/services/facturas_pdf';
 
 const KEYWORDS = ['factura', 'Factura', 'Facturación', 'facturación', 'FACTURA', 'FACTURACIÓN'];
 
@@ -139,12 +139,18 @@ function extractZip(zipPath, extractPath){
 
 async function downloadAttachment(client, messageId, attachment, emailSubject){
   try{
+    
+    const filename = sanitizeFilename(attachment.name);
+    const filepath = path.join(DOWNLOAD_FOLDER, filename);
+
+    if(fs.existsSync(filepath)){
+      console.log(`Archivo ya existe, se omite: ${filename}`);
+      return false;
+    }
+
     const attachmentData = await client
     .api(`/me/messages/${messageId}/attachments/${attachment.id}`)
     .get();
-
-    const filename = sanitizeFilename(attachment.name);
-    const filepath = path.join(DOWNLOAD_FOLDER, filename);
 
     const buffer = Buffer.from(attachmentData.contentBytes, 'base64');
     fs.writeFileSync(filepath, buffer);
@@ -240,9 +246,10 @@ async function searchAndDownloadInvoices(){
 
 
 
-    
+  return true;
   } catch (error) {
     console.error('error:', error.message);
+    throw error;
 
     if (error.statusCode){
       console.error('Codigo de estado:', error.statusCode);
@@ -256,6 +263,4 @@ async function searchAndDownloadInvoices(){
 
 /////
 
-
-
-searchAndDownloadInvoices();
+export { searchAndDownloadInvoices };

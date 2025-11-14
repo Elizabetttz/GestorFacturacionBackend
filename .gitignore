@@ -11,7 +11,9 @@ yarn-debug.log*
 # Tokens y secretos
 tokens.json
 src/services/tokens.json
-
+src/services/facturas_descargadas
+src/services/facturas_pdf
+src/services/ordenes_descargadas
 # Archivos del sistema
 .DS_Store
 

@@ -130,12 +130,17 @@ function extractZip(zipPath, extractPath, emailSubject){
 
 async function downloadAttachment(client, messageId, attachment, emailSubject){
   try{
+    const filename = sanitizeFilename(attachment.name);
+    const filepath = path.join(PDF_FOLDER, filename);
+
+    if (fs.existsSync(filepath)){
+      console.log(`Archivo ya existe, se omite ${filename}`);
+      return false;
+    }
+
     const attachmentData = await client
     .api(`/me/messages/${messageId}/attachments/${attachment.id}`)
     .get();
-
-    const filename = sanitizeFilename(attachment.name);
-    const filepath = path.join(PDF_FOLDER, filename);
 
     const buffer = Buffer.from(attachmentData.contentBytes, 'base64');
     fs.writeFileSync(filepath, buffer);
@@ -251,14 +256,16 @@ async function searchAndDownloadInvoices(){
     console.log(`   📄 PDFs de Ordenes de Compra: ${totalPDFs}`);
     console.log(`   📁 Guardados en: ${path.resolve(PDF_FOLDER)}`);
     console.log('='.repeat(60));
-
+    
+    return true;
   } catch (error) {
     console.error('❌ Error:', error.message);
     if (error.statusCode){
       console.error('Código de estado:', error.statusCode);
     }
+    throw error;
   }
 }
 
 // Ejecutar
-searchAndDownloadInvoices();
+export {searchAndDownloadInvoices};

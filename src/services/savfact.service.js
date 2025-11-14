@@ -7,7 +7,7 @@ const PDF_FOLDER = './src/services/facturas_pdf';
 const PDF_WEB_PATH = '/facturas/';
 
 
-// ========== FUNCIÓN PARA FORMATEAR FECHAS ==========
+
 function formatearFecha(fechaStr) {
   if (!fechaStr || fechaStr.trim() === '') return null;
   
@@ -166,10 +166,12 @@ async function importarJSONaDb(){
         console.log(`❌ Fallidas: ${fallidos}`);
         console.log(`📊 Total: ${facturas.length}`);
 
+    return true;
     } catch (error){
         console.error('❌ Error general:', error.message);
+        throw error;
     }
 }
 
-// Ejecutar importación
-importarJSONaDb();
+
+export {importarJSONaDb};

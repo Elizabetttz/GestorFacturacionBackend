@@ -1,35 +1,5 @@
 [
   {
-    "archivo": "XXOSIPOFOC_174325780_1.PDF",
-    "ruta": "src\\services\\ordenes_descargadas\\XXOSIPOFOC_174325780_1.PDF",
-    "datos": {
-      "archivo": "XXOSIPOFOC_174325780_1.PDF",
-      "numero_orden": "",
-      "fecha_elaboracion": "20-10-2025",
-      "fecha_limite_entrega": "",
-      "comprador_nombre": "Centros Médicos\nColsanitas\nCENTROS MEDICOS COLSANITAS SAS",
-      "comprador_nit": "79496846",
-      "comprador_direccion": "",
-      "subtotal": "960,000",
-      "iva": "182,400",
-      "total": "1,142,400",
-      "forma_pago": "",
-      "terminos_pago": "NETO A 45 DIAS",
-      "confianza_general": 1,
-      "numero_solicitud": "",
-      "solicitante": "",
-      "articulo_proveedor": "421911",
-      "descripcion_item": "PANEL PARA MONTAJE\nDE EQUIPO DE\nORGANOS DE LOS\nSENTIDOS REF:\n77790-3",
-      "unidad": "Unidad",
-      "cantidad": "2",
-      "precio_unitario": "480,000",
-      "iva_item": 0,
-      "valor_total_item": "960,000"
-    },
-    "exito": true,
-    "fecha_procesamiento": "2025-11-12T16:07:03.204Z"
-  },
-  {
     "archivo": "XXOSIPOFOC_174373128_1.PDF",
     "ruta": "src\\services\\ordenes_descargadas\\XXOSIPOFOC_174373128_1.PDF",
     "datos": {
@@ -57,7 +27,7 @@
       "valor_total_item": "4,900,000"
     },
     "exito": true,
-    "fecha_procesamiento": "2025-11-12T16:07:16.132Z"
+    "fecha_procesamiento": "2025-11-14T04:29:42.103Z"
   },
   {
     "archivo": "XXOSIPOFOC_174659486_1.PDF",
@@ -87,7 +57,7 @@
       "valor_total_item": "530,000"
     },
     "exito": true,
-    "fecha_procesamiento": "2025-11-12T16:07:28.867Z"
+    "fecha_procesamiento": "2025-11-14T04:29:54.028Z"
   },
   {
     "archivo": "XXOSIPOFOC_175125840_1.PDF",
@@ -117,7 +87,7 @@
       "valor_total_item": "1,060,000"
     },
     "exito": true,
-    "fecha_procesamiento": "2025-11-12T16:07:52.818Z"
+    "fecha_procesamiento": "2025-11-14T04:30:05.794Z"
   },
   {
     "archivo": "XXOSIPOFOC_175125842_1.PDF",
@@ -147,7 +117,7 @@
       "valor_total_item": "1,100,000"
     },
     "exito": true,
-    "fecha_procesamiento": "2025-11-12T16:08:03.480Z"
+    "fecha_procesamiento": "2025-11-14T04:30:17.566Z"
   },
   {
     "archivo": "XXOSIPOFOC_175125846_1.PDF",
@@ -177,7 +147,7 @@
       "valor_total_item": "1,100,000"
     },
     "exito": true,
-    "fecha_procesamiento": "2025-11-12T16:08:16.584Z"
+    "fecha_procesamiento": "2025-11-14T04:30:42.489Z"
   },
   {
     "archivo": "XXOSIPOFOC_175174725_1.PDF",
@@ -207,7 +177,7 @@
       "valor_total_item": "390,000"
     },
     "exito": true,
-    "fecha_procesamiento": "2025-11-12T16:08:26.172Z"
+    "fecha_procesamiento": "2025-11-14T04:30:51.154Z"
   },
   {
     "archivo": "XXOSIPOFOC_175326882_1.PDF",
@@ -237,6 +207,96 @@
       "valor_total_item": "500,000"
     },
     "exito": true,
-    "fecha_procesamiento": "2025-11-12T16:08:36.946Z"
+    "fecha_procesamiento": "2025-11-14T04:31:06.103Z"
+  },
+  {
+    "archivo": "XXOSIPOFOC_175375067_1.PDF",
+    "ruta": "src\\services\\ordenes_descargadas\\XXOSIPOFOC_175375067_1.PDF",
+    "datos": {
+      "archivo": "XXOSIPOFOC_175375067_1.PDF",
+      "numero_orden": "",
+      "fecha_elaboracion": "12-11-2025",
+      "fecha_limite_entrega": "",
+      "comprador_nombre": "Clínica\nColsanitas\nCLINICA COLSANITAS S.A.",
+      "comprador_nit": "79496846",
+      "comprador_direccion": "",
+      "subtotal": "530,000",
+      "iva": "100,700",
+      "total": "630,700",
+      "forma_pago": "",
+      "terminos_pago": "NETO A 30 DIAS",
+      "confianza_general": 1,
+      "numero_solicitud": "",
+      "solicitante": "",
+      "articulo_proveedor": "387678",
+      "descripcion_item": "MANO DE OBRA\nESPECIALIZADA\n-EQUIPO MEDICO-",
+      "unidad": "Unidad",
+      "cantidad": "1",
+      "precio_unitario": "530,000",
+      "iva_item": 0,
+      "valor_total_item": "530,000"
+    },
+    "exito": true,
+    "fecha_procesamiento": "2025-11-14T04:31:17.932Z"
+  },
+  {
+    "archivo": "XXOSIPOFOC_175403594_1.PDF",
+    "ruta": "src\\services\\ordenes_descargadas\\XXOSIPOFOC_175403594_1.PDF",
+    "datos": {
+      "archivo": "XXOSIPOFOC_175403594_1.PDF",
+      "numero_orden": "",
+      "fecha_elaboracion": "12-11-2025",
+      "fecha_limite_entrega": "",
+      "comprador_nombre": "Clínica\nColsanitas\nCLINICA COLSANITAS S.A.",
+      "comprador_nit": "79496846",
+      "comprador_direccion": "",
+      "subtotal": "2,040,000",
+      "iva": "387,600",
+      "total": "2,427,600",
+      "forma_pago": "",
+      "terminos_pago": "NETO A 45 DIAS",
+      "confianza_general": 1,
+      "numero_solicitud": "",
+      "solicitante": "",
+      "articulo_proveedor": "393632",
+      "descripcion_item": "SOPORTE PARA\nCIRCUITOS DE\nMAQUINAS DE\nANESTESIA",
+      "unidad": "Unidad",
+      "cantidad": "4",
+      "precio_unitario": "510,000",
+      "iva_item": 0,
+      "valor_total_item": "2,040,000"
+    },
+    "exito": true,
+    "fecha_procesamiento": "2025-11-14T04:31:32.391Z"
+  },
+  {
+    "archivo": "XXOSIPOFOC_175412137_1.PDF",
+    "ruta": "src\\services\\ordenes_descargadas\\XXOSIPOFOC_175412137_1.PDF",
+    "datos": {
+      "archivo": "XXOSIPOFOC_175412137_1.PDF",
+      "numero_orden": "",
+      "fecha_elaboracion": "12-11-2025",
+      "fecha_limite_entrega": "",
+      "comprador_nombre": "Centros Médicos\nColsanitas\nCENTROS MEDICOS COLSANITAS SAS",
+      "comprador_nit": "79496846",
+      "comprador_direccion": "",
+      "subtotal": "3,400,000",
+      "iva": "646,000",
+      "total": "4,046,000",
+      "forma_pago": "",
+      "terminos_pago": "NETO A 45 DIAS",
+      "confianza_general": 1,
+      "numero_solicitud": "",
+      "solicitante": "",
+      "articulo_proveedor": "376093",
+      "descripcion_item": "ALMACENAMIENTO\nENDOSCOPIOS",
+      "unidad": "Unidad",
+      "cantidad": "1",
+      "precio_unitario": "3,400,000",
+      "iva_item": 0,
+      "valor_total_item": "3,400,000"
+    },
+    "exito": true,
+    "fecha_procesamiento": "2025-11-14T04:31:43.119Z"
   }
 ]

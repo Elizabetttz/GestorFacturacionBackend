@@ -172,6 +172,11 @@ async function analizarFactura(pdfPath) {
   }
 }
 
+function facturaYaProcesada(nombreArchivo, listaFacturas) {
+  return listaFacturas.some(f => f.archivo === nombreArchivo && f.exito === true);
+}
+
+
 // ========== FUNCIÓN PARA PROCESAR TODAS LAS FACTURAS ==========
 async function procesarTodasLasFacturas() {
   console.log('\n' + '='.repeat(60));
@@ -188,34 +193,47 @@ async function procesarTodasLasFacturas() {
       .filter(file => file.toLowerCase().endsWith('.pdf'))
       .map(file => path.join(PDF_FOLDER, file));
 
+
     if (archivos.length === 0) {
       console.log('❌ No se encontraron archivos PDF para analizar');
       return;
     }
 
+
+    const resultadosPrevios = fs.existsSync(OUTPUT_FILE)
+      ? JSON.parse(fs.readFileSync(OUTPUT_FILE, "utf8"))
+      : [];
+
     console.log(`📄 Encontrados ${archivos.length} archivos PDF\n`);
 
-    const resultados = [];
-    let exitosos = 0;
-    let fallidos = 0;
+
+    const resultados = [...resultadosPrevios];
+    let exitosos = resultadosPrevios.filter(f => f.exito).length;
+    let fallidos = resultadosPrevios.filter(f => !f.exito).length;
 
     for (let i = 0; i < archivos.length; i++) {
-      console.log(`\n[${ i + 1}/${archivos.length}]`);
-      
-      const resultado = await analizarFactura(archivos[i]);
-      resultados.push(resultado);
 
-      if (resultado.exito) {
-        exitosos++;
-      } else {
-        fallidos++;
-      }
+  const nombreArchivo = path.basename(archivos[i]);
+  console.log(`\n[${i + 1}/${archivos.length}] ${nombreArchivo}`);
 
-      // Pequeña pausa entre llamadas para no saturar la API
-      if (i < archivos.length - 1) {
-        await new Promise(resolve => setTimeout(resolve, 1000));
-      }
-    }
+  // VALIDACIÓN — evitar reprocesar
+  if (facturaYaProcesada(nombreArchivo, resultadosPrevios)) {
+    console.log(`⏭️ Saltando ${nombreArchivo} (ya procesada anteriormente)`);
+    continue;
+  }
+
+  // Procesar normalmente
+  const resultado = await analizarFactura(archivos[i]);
+  resultados.push(resultado);
+
+  if (resultado.exito) exitosos++;
+  else fallidos++;
+
+  // Pequeña pausa
+  if (i < archivos.length - 1) {
+    await new Promise(resolve => setTimeout(resolve, 1000));
+  }
+}
 
     // Guardar resultados
     fs.writeFileSync(OUTPUT_FILE, JSON.stringify(resultados, null, 2), 'utf-8');
@@ -230,10 +248,11 @@ async function procesarTodasLasFacturas() {
     console.log(`💾 Resultados guardados en: ${path.resolve(OUTPUT_FILE)}`);
     console.log('='.repeat(60) + '\n');
 
+  return true;
   } catch (error) {
     console.error('\n❌ Error general:', error.message);
+    throw error;
   }
 }
 
-// Ejecutar análisis
-procesarTodasLasFacturas();
+export {procesarTodasLasFacturas};

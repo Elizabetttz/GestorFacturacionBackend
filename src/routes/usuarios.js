@@ -5,8 +5,17 @@ import pool from "../config/db.js";
 const router  = express.Router();
 
 //Logica crear usuario desde el frontend
+router.get("/", async (req, res) =>{
+    try{
+        const result = await pool.query('SELECT * FROM usuarios');
+        res.json(result.rows);
+    } catch (err){
+        console.log('Error al obtener usuarios:', err);
+        res.status(500).json({message: 'Error al obtener usuarios'});
+    }
+});
 
-router.post("/usuarios", async (req, res) => {
+router.post("/", async (req, res) => {
     try {
         const { tipo_usuario, documento, nombre, password} = req.body;
 
@@ -23,13 +32,27 @@ router.post("/usuarios", async (req, res) => {
     }
 });
 
-export default router;
-router.get("/usuarios", async (req, res) =>{
+router.delete("/delete/:id", async (req,res)=>{
+    const { id } = req.params;
+    console.log('ID recibido:', id);
+
+    if(!id){
+        return res.status(400).json({message: 'ID no proporcionado'});
+    }
+
     try{
-        const result = await pool.query('SELECT * FROM usuarios');
-        res.json(result.rows);
-    } catch (err){
-        console.log('Error al obtener usuarios:', err);
-        res.status(500).json({message: 'Error al obtener usuarios'});
+        const result = await pool.query(`DELETE FROM usuarios WHERE id = $1 RETURNING *;`, [id]);
+    
+        if(result.rowCount === 0){
+            res.status(404).json({message: 'Factura no encontrada'});
+        }
+
+        res.json({message: 'Factura eliminada correctamente', deleted:result.rows[0]});
+    } catch(err){
+        console.log('Error al eliminar la facura:', err);
+        res.status(500).json({message: 'Error al eliminar la factura'});
     }
 });
+
+
+export default router;
